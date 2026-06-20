@@ -5,7 +5,7 @@
     <title>Formulário Pessoa</title>
 </head>
 <body>
-<h1 th:text="${#fields.hasErrors()} ? 'Editar Pessoa' : 'Nova Pessoa'"></h1>
+<h1 th:text="${pessoa.id != null} ? 'Editar Pessoa' : 'Nova Pessoa'"></h1>    
 <form th:action="@{${pessoa.id} != null ? '/pessoas/update/' + ${pessoa.id} : '/pessoas'}" th:object="${pessoa}" method="post">
     <div>
         <label>CPF:</label>
