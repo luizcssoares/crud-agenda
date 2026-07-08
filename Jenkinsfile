@@ -19,9 +19,10 @@ pipeline {
 		}
 		stage('Build Maven') {
 			tools {
-                docker {
-                    image 'maven:3.9.11-eclipse-temurin-21'
-                }
+				maven 'Maven-3.9'
+                //docker {
+                //    image 'maven:3.9.11-eclipse-temurin-21'
+                //}
             }
 			steps {
 			   sh 'mvn -B -DskipTests clean package'
