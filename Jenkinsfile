@@ -18,6 +18,11 @@ pipeline {
 			}
 		}
 		stage('Build Maven') {
+			agent {
+                docker {
+                    image 'maven:3.9.11-eclipse-temurin-21'
+                }
+            }
 			steps {
 			   sh 'mvn -B -DskipTests clean package'
 			}
