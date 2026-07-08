@@ -14,7 +14,7 @@ pipeline {
 	stages { 
 		stage('GIT pull') {			
 			steps{
-			   git branch: 'main', url: "https://github.com/luizcssoares/crud-agenda.git"
+			   git branch: 'master', url: "https://github.com/luizcssoares/crud-agenda.git"
 			}
 		}
 		stage('Build Maven') {
