@@ -1,4 +1,6 @@
+com/example/crud/configuration/RestClientConfig.class
 com/example/crud/controller/PessoaController.class
 com/example/crud/repository/PessoaRepository.class
+com/example/crud/service/PythonService.class
 com/example/crud/CrudApplication.class
 com/example/crud/model/Pessoa.class
