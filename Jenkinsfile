@@ -45,7 +45,7 @@ pipeline {
 			steps{
 			   script {				 
 				     // echo 'Deploy Docker Hub concluido com sucesso !'
-				     docker.withRegistry( '', dockerhub_credentials ) {
+				     docker.withRegistry( dockerhub_credentials, "." ) {
 				     docker_image.push("latest")					
 				  }				  				
 			   }
