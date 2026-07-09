@@ -19,11 +19,11 @@ pipeline {
 		}
 		stage('Build Maven') {
 			tools {
-				dockerTool 'mydocker'
-				maven 'Maven-3.9'
-                //docker {
-                //    image 'maven:3.9.11-eclipse-temurin-21'
-                //}
+				//dockerTool 'mydocker'
+				//maven 'Maven-3.9'
+                docker {
+                    image 'maven:3.9.11-eclipse-temurin-21'
+                }
             }
 			steps {
 			   sh 'mvn -B -DskipTests clean package'
@@ -45,7 +45,7 @@ pipeline {
 			steps{
 			   script {				 
 				     // echo 'Deploy Docker Hub concluido com sucesso !'
-				     docker.withRegistry( "https://index.docker.io/v1/", dockerhub_credentials ) {
+				     docker.withRegistry( '', dockerhub_credentials ) {
 				     docker_image.push("latest")					
 				  }				  				
 			   }
