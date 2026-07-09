@@ -19,6 +19,7 @@ pipeline {
 		}
 		stage('Build Maven') {
 			tools {
+				docker 'mydocker'
 				maven 'Maven-3.9'
                 //docker {
                 //    image 'maven:3.9.11-eclipse-temurin-21'
