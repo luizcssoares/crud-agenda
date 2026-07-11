@@ -52,7 +52,8 @@ pipeline {
 		}		
         stage('Deploy App on k8s') {
             steps {
-				script {				  						                					   
+				script {				  	
+					   					                					   
 					                                          
                        withKubeConfig([credentialsId: 'KubeConfig-Secret']) {
 						    dir ('chart') {
@@ -60,7 +61,7 @@ pipeline {
 									pwd
 									ls									
 								'''		
-																	
+
 							}							
 						
 
