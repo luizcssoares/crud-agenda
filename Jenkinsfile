@@ -55,13 +55,21 @@ pipeline {
 				script {				  						                					   
 					                                          
                        withKubeConfig([credentialsId: 'KubeConfig-Secret']) {
-							dir ('helm') {
-								sh 'ls'
+								dir('chart') {
+								sh '''
+									pwd
+									ls -lah
+									find . -maxdepth 2 -type f
+								'''
+						    } 
+
+							//dir ('chart') {
+							//	sh 'ls'
 						        //sh 'kubectl get pods'
-								sh 'helm install crud-agenda .'
+							//	sh 'helm install crud-agenda .'
 						        //sh 'helm install crud-agenda .'
 								//sh 'helm upgrade --install apirestcalculadora chart --namespace default --set image.repository=apirestcalculadora --set image.tag=latest'
-							}
+							//}
 					   }
 				}
             }
