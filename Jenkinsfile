@@ -59,8 +59,7 @@ pipeline {
 								sh '''
 									pwd
 									ls									
-								'''			
-								sh 'helm install crud-agenda .'						
+								'''											
 							}							
 						
 
