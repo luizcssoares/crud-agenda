@@ -54,15 +54,12 @@ pipeline {
             steps {
 				script {				  						                					   
 					                                          
-                       withKubeConfig([credentialsId: 'KubeConfig-Secret']) {
-								dir('chart') {
-								sh '''
-									pwd
-									ls -lah
-									find . -maxdepth 2 -type f
-								'''
-						    } 
-
+                       withKubeConfig([credentialsId: 'KubeConfig-Secret']) {													    
+							sh '''
+								pwd
+								find . -name Chart.yaml
+							'''								
+						
 							//dir ('chart') {
 							//	sh 'ls'
 						        //sh 'kubectl get pods'
