@@ -54,11 +54,13 @@ pipeline {
             steps {
 				script {				  						                					   
 					                                          
-                       withKubeConfig([credentialsId: 'KubeConfig-Secret']) {													    
-							sh '''
-								pwd
-								find . -name Chart.yaml
-							'''								
+                       withKubeConfig([credentialsId: 'KubeConfig-Secret']) {
+						    dir ('chart') {
+								sh '''
+									pwd
+									find . -name Chart.yaml
+								'''	
+							}							
 						
 							//dir ('chart') {
 							//	sh 'ls'
@@ -66,7 +68,9 @@ pipeline {
 							//	sh 'helm install crud-agenda .'
 						        //sh 'helm install crud-agenda .'
 								//sh 'helm upgrade --install apirestcalculadora chart --namespace default --set image.repository=apirestcalculadora --set image.tag=latest'
-							//}
+							//}	     
+                     
+							
 					   }
 				}
             }
