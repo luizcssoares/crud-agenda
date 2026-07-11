@@ -52,10 +52,7 @@ pipeline {
 		}		
         stage('Deploy App on k8s') {
             steps {
-				script {		
-					
-							  	
-					   					                					   
+				script {													   					                					   
 					                                          
                        withKubeConfig([credentialsId: 'KubeConfig-Secret']) {
 						    dir ('chart') {
@@ -63,11 +60,9 @@ pipeline {
 									pwd
 									ls									
 								'''		
-
+								sh 'helm install crud-agenda .'
 							}							
 						
-
-
 							//dir ('chart') {
 							//	sh 'ls'
 						        //sh 'kubectl get pods'
