@@ -59,11 +59,12 @@ pipeline {
 								sh '''
 									pwd
 									ls									
-								'''									
+								'''			
+								sh 'helm install crud-agenda .'						
 							}							
 						
 
-						
+
 							//dir ('chart') {
 							//	sh 'ls'
 						        //sh 'kubectl get pods'
