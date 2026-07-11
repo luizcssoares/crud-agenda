@@ -44,7 +44,7 @@ pipeline {
 			steps{
 			   script {				 
 				     // echo 'Deploy Docker Hub concluido com sucesso !'
-				     docker.withRegistry( '', DOCKERHUB_CREDENTIALS ) {
+				     docker.withRegistry( 'https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS ) {
 				     docker_image.push("latest")					
 				  }				  				
 			   }
