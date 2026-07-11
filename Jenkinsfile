@@ -55,7 +55,7 @@ pipeline {
 				script {				  						                					   
 					                                          
                        withKubeConfig([credentialsId: 'KubeConfig-Secret']) {
-							dir ('chart') {
+							dir ('helm') {
 								sh 'ls'
 						        //sh 'kubectl get pods'
 								sh 'helm install crud-agenda .'
