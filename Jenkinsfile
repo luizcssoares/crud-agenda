@@ -59,7 +59,8 @@ pipeline {
 								sh '''
 									pwd
 									ls									
-								'''											
+								'''		
+																	
 							}							
 						
 
