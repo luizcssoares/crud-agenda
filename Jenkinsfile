@@ -70,17 +70,7 @@ pipeline {
 									kubectl get nodes	
 								'''		
 								sh 'helm install crud-agenda .'
-							}							
-						
-							//dir ('chart') {
-							//	sh 'ls'
-						        //sh 'kubectl get pods'
-							//	sh 'helm install crud-agenda .'
-						        //sh 'helm install crud-agenda .'
-								//sh 'helm upgrade --install apirestcalculadora chart --namespace default --set image.repository=apirestcalculadora --set image.tag=latest'
-							//}	     
-                     
-							
+							}																				                     							
 					   }
 				}
             }
