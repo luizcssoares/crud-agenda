@@ -58,7 +58,11 @@ pipeline {
 						    dir ('chart') {
 								sh '''
 									pwd
-									ls									
+									ls
+									kubectl config view
+									kubectl config current-context
+									kubectl cluster-info
+									kubectl get nodes	
 								'''		
 								sh 'helm install crud-agenda .'
 							}							
