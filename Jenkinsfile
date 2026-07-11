@@ -57,14 +57,19 @@ pipeline {
                        withKubeConfig([credentialsId: 'KubeConfig-Secret']) {
 						    dir ('chart') {
 								sh '''
-									pwd
-									ls
-									kubectl config view
 									kubectl config current-context
-									kubectl cluster-info
-									kubectl get nodes	
-								'''		
-								sh 'helm install crud-agenda .'
+									kubectl get nodes
+								'''
+
+								//sh '''
+								//	pwd
+								//	ls
+								//	kubectl config view
+								//	kubectl config current-context
+								//	kubectl cluster-info
+								//	kubectl get nodes	
+								//'''		
+								//sh 'helm install crud-agenda .'
 							}							
 						
 							//dir ('chart') {
