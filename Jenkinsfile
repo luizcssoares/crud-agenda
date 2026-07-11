@@ -58,9 +58,8 @@ pipeline {
 						    dir ('chart') {
 								sh '''
 									pwd
-									find . -name Chart.yaml
-								'''	
-								sh 'helm install crud-agenda .'
+									ls									
+								'''									
 							}							
 						
 							//dir ('chart') {
