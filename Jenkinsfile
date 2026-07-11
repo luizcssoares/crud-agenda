@@ -62,6 +62,8 @@ pipeline {
 								'''									
 							}							
 						
+
+						
 							//dir ('chart') {
 							//	sh 'ls'
 						        //sh 'kubectl get pods'
