@@ -4,6 +4,15 @@ metadata:
   name: {{ include "crud-agenda.fullname" . }}
   labels:
     {{- include "crud-agenda.labels" . | nindent 4 }}
+env:
+  - name: SPRING_DATASOURCE_URL
+    value: jdbc:postgresql://{{ .Values.database.host }}:{{ .Values.database.port }}/{{ .Values.database.name }}
+
+  - name: SPRING_DATASOURCE_USERNAME
+    value: {{ .Values.database.username }}
+
+  - name: SPRING_DATASOURCE_PASSWORD
+    value: {{ .Values.database.password }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
