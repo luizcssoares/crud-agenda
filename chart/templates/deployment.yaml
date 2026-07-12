@@ -43,32 +43,24 @@ spec:
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
-              protocol: TCP
-          {{- with .Values.livenessProbe }}
-
+              protocol: TCP      
+                  
           env:
-
             - name: SERVER_PORT
               value: "8088"
-
             - name: SPRING_DATASOURCE_URL
               value: "jdbc:postgresql://{{ .Values.database.host }}:{{ .Values.database.port }}/{{ .Values.database.name }}"
-
             - name: SPRING_DATASOURCE_USERNAME
               value: "{{ .Values.database.username }}"
-
             - name: SPRING_DATASOURCE_PASSWORD
               value: "{{ .Values.database.password }}"
-
             - name: SPRING_JPA_HIBERNATE_DDL_AUTO
               value: "update"
-
             - name: SPRING_JPA_SHOW_SQL
               value: "true"
-
             - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
               value: "org.hibernate.dialect.PostgreSQLDialect" 
-
+          {{- with .Values.livenessProbe }}    
           livenessProbe:
             {{- toYaml . | nindent 12 }}
           {{- end }}
