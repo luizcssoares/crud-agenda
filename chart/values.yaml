@@ -57,8 +57,7 @@ service:
   port: 8088  
 
 database:
-  # host: 192.168.1.93
-  host: localhost
+  host: 192.168.1.93
   port: 5432
   name: estudo
   username: estudo
