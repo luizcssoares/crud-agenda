@@ -6,12 +6,10 @@ metadata:
     {{- include "crud-agenda.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
-  ports:
-    #-port: {{ .Values.service.port }}
-    # targetPort: http
+  ports:    
     - port: 8088
       targetPort: 8088
-    # protocol: TCP
-    # name: http
+      protocol: TCP
+      name: http
   selector:
     {{- include "crud-agenda.selectorLabels" . | nindent 4 }}
