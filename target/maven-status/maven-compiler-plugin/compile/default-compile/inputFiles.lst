@@ -1,6 +1,7 @@
 /home/luizcarlos/Development/vscode-workspace/crud-agenda/src/main/java/com/example/crud/CrudApplication.java
 /home/luizcarlos/Development/vscode-workspace/crud-agenda/src/main/java/com/example/crud/configuration/RestClientConfig.java
 /home/luizcarlos/Development/vscode-workspace/crud-agenda/src/main/java/com/example/crud/controller/PessoaController.java
+/home/luizcarlos/Development/vscode-workspace/crud-agenda/src/main/java/com/example/crud/model/Mensagem.java
 /home/luizcarlos/Development/vscode-workspace/crud-agenda/src/main/java/com/example/crud/model/Pessoa.java
 /home/luizcarlos/Development/vscode-workspace/crud-agenda/src/main/java/com/example/crud/repository/PessoaRepository.java
 /home/luizcarlos/Development/vscode-workspace/crud-agenda/src/main/java/com/example/crud/service/PythonService.java
