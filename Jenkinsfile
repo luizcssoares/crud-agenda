@@ -38,9 +38,9 @@ pipeline {
 			   script {
 			         //docker_image = docker.build  registry
 					 docker_image = docker.build("${registry}:${env.BUILD_NUMBER}", "--no-cache .")
-					 sh """
-                         docker tag ${registry}:${env.BUILD_NUMBER} ${registry}:latest
-                     """					 
+					 //sh """
+                     //    docker tag ${registry}:${env.BUILD_NUMBER} ${registry}:latest
+                     //"""					 
 			   }
 			}
 		}
