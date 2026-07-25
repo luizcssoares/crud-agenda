@@ -38,6 +38,9 @@ pipeline {
 			   script {
 			         //docker_image = docker.build  registry
 					 docker_image = docker.build("${registry}:${env.BUILD_NUMBER}", "--no-cache .")
+					 sh """
+                         docker tag ${registry}:${env.BUILD_NUMBER} ${registry}:latest
+                     """					 
 			   }
 			}
 		}
@@ -46,7 +49,8 @@ pipeline {
 			   script {				 
 				     // echo 'Deploy Docker Hub concluido com sucesso !'
 				     docker.withRegistry( 'https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS ) {
-				     docker_image.push("latest")					
+					 docker.image("${registry}:latest").push()
+				     //docker_image.push("latest")					
 				  }				  				
 			   }
 			}
