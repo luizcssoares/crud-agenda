@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	environment {
-		REGISTRY = 'luizcssoares/crud-agenda'
+		registry = 'luizcssoares/crud-agenda'
 		DOCKERHUB_CREDENTIALS = 'DockerHub-Login'		
 		DOCKER_IMAGE = ''
 		IMAGE_TAG = "latest"
@@ -35,9 +35,12 @@ pipeline {
 		}
 		stage('Docker Build'){
 			steps{
-			   script {			         
-					 //docker_image = docker.build("${registry}:${env.BUILD_NUMBER}", "--no-cache .")
-					 DOCKER_IMAGE = docker.build("${REGISTRY}:${env.BUILD_NUMBER}", "--no-cache .")
+			   script {
+			         //docker_image = docker.build  registry
+					 docker_image = docker.build("${registry}:${env.BUILD_NUMBER}", "--no-cache .")
+					 //sh """
+                     //    docker tag ${registry}:${env.BUILD_NUMBER} ${registry}:latest
+                     //"""					 
 			   }
 			}
 		}
@@ -46,8 +49,7 @@ pipeline {
 			   script {				 
 				     // echo 'Deploy Docker Hub concluido com sucesso !'
 				     docker.withRegistry( 'https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS ) {
-					 //docker.image("${registry}:latest").push()
-					 docker.image(DOCKER_IMAGE).push()
+					 docker.image("${registry}:${env.BUILD_NUMBER}").push()
 				     //docker_image.push("latest")					
 				  }				  				
 			   }
