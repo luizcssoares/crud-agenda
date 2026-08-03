@@ -30,11 +30,10 @@ pipeline {
 
             steps {
                 withSonarQubeEnv('SonarQube-MicroK8s') {
-
                     sh '''
-                        mvn -B sonar:sonar \
-                        -Dsonar.projectKey=crud-agenda \
-                        -Dsonar.projectName="CRUD Agenda"
+						org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \ 
+						-Dsonar.projectKey=crud-agenda \
+						-Dsonar.projectName="CRUD Agenda"                        
                     '''
                 }
             }
