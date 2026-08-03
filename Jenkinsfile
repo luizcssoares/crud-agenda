@@ -23,11 +23,32 @@ pipeline {
 			   sh 'mvn -B -DskipTests clean package'
 			}
 		}
-		stage('SonarQube') {
-			steps {
-			   echo 'Executin SonarQube.'
-			}
-		}
+		stage('SonarQube Analysis') {
+            tools {
+                maven 'Maven-3.9'
+            }
+
+            steps {
+                withSonarQubeEnv('SonarQube-MicroK8s') {
+
+                    sh '''
+                        mvn -B sonar:sonar \
+                        -Dsonar.projectKey=crud-agenda \
+                        -Dsonar.projectName="CRUD Agenda"
+                    '''
+                }
+            }
+        }
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 10, unit: 'MINUTES') {
+
+                    waitForQualityGate(
+                        abortPipeline: true
+                    )
+                }
+            }
+        }		
 		stage('Docker Build'){
 			steps{
 			   script {			         
