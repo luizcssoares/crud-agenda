@@ -45,6 +45,7 @@ pipeline {
 
                     waitForQualityGate(
                         abortPipeline: true
+						webhookSecretId: 'SonarQube-Webhook-Secret'
                     )
                 }
             }
