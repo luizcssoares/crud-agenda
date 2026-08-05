@@ -41,7 +41,7 @@ public class PessoaController {
         int pageSize = 5;
         Pageable pageable = PageRequest.of(page, pageSize);
         Page<Pessoa> pessoaPage = pessoaRepository.findAll(pageable);
-        consultaPessoasCounter.increment();
+        //consultaPessoasCounter.increment();
         model.addAttribute("pessoaPage", pessoaPage);
         model.addAttribute("pessoas", pessoaPage.getContent());
         return "list";
@@ -49,6 +49,7 @@ public class PessoaController {
 
     @GetMapping("/novo")
     public String showCreateForm(Pessoa pessoa) {
+        consultaPessoasCounter.increment();
         return "form";
     }
 
