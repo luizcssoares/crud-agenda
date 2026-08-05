@@ -28,8 +28,9 @@ pipeline {
                 maven 'Maven-3.9'
             }
 
-            steps {			   
-                withSonarQubeEnv(credentialsId: 'SonarQube-Webhook-Secret', installationName: 'SonarQube-MicroK8s') {                
+            steps {
+                withSonarQubeEnv('SonarQube-MicroK8s') {
+
                     sh '''						
                         mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
                         -Dsonar.projectKey=crud-agenda \
