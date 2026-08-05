@@ -5,6 +5,8 @@ import com.example.crud.model.Pessoa;
 import com.example.crud.repository.PessoaRepository;
 import com.example.crud.service.PythonService;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +23,17 @@ public class PessoaController {
 
     private final PessoaRepository pessoaRepository;
     private final PythonService pythonService;
+    private final Counter consultaPessoasCounter;
 
-    public PessoaController(PessoaRepository pessoaRepository, PythonService pythonService) {
+    public PessoaController(PessoaRepository pessoaRepository, PythonService pythonService, MeterRegistry meterRegistry) {
         this.pessoaRepository = pessoaRepository;
         this.pythonService = pythonService;
+
+        this.consultaPessoasCounter = Counter.builder(
+                "crud_agenda_consultas_pessoas_total"
+            )
+            .description("Quantidade de consultas realizadas na API de pessoas")
+            .register(meterRegistry);
     }
 
     @GetMapping
@@ -32,6 +41,7 @@ public class PessoaController {
         int pageSize = 5;
         Pageable pageable = PageRequest.of(page, pageSize);
         Page<Pessoa> pessoaPage = pessoaRepository.findAll(pageable);
+        consultaPessoasCounter.increment();
         model.addAttribute("pessoaPage", pessoaPage);
         model.addAttribute("pessoas", pessoaPage.getContent());
         return "list";
