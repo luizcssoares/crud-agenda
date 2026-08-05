@@ -15,14 +15,32 @@ pipeline {
 			   git branch: 'master', url: "https://github.com/luizcssoares/crud-agenda.git"
 			}
 		}
-		stage('Build Maven') {
+		stage('Build') {
 			tools {				
 				maven 'Maven-3.9'                
             }
 			steps {
-			   sh 'mvn -B -DskipTests clean package'
+				sh 'mvn -B clean compile'
 			}
 		}
+
+		stage('Realizar Testes') {
+			tools {				
+				maven 'Maven-3.9'                
+            }
+			steps {
+				sh 'mvn -B test'
+			}
+		}
+
+		stage('Gerar JAR') {
+			tools {				
+				maven 'Maven-3.9'                
+            }
+			steps {
+				sh 'mvn -B package -DskipTests'
+			}
+		}		
 		stage('SonarQube Analysis') {
             tools {
                 maven 'Maven-3.9'
