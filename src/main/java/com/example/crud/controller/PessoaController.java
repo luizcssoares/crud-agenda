@@ -40,8 +40,7 @@ public class PessoaController {
     public String list(Model model, @RequestParam(defaultValue = "0") int page) {
         int pageSize = 5;
         Pageable pageable = PageRequest.of(page, pageSize);
-        Page<Pessoa> pessoaPage = pessoaRepository.findAll(pageable);
-        //consultaPessoasCounter.increment();
+        Page<Pessoa> pessoaPage = pessoaRepository.findAll(pageable);        
         model.addAttribute("pessoaPage", pessoaPage);
         model.addAttribute("pessoas", pessoaPage.getContent());
         return "list";
